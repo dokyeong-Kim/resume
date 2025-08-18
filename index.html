@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이력서 - 김도경</title>
+    <base href="/resume/">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .resume-section {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: none;
+            outline: none;
+        }
+
+        .resume-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0;
+            padding: 0;
+            border: none;
+            vertical-align: top;
+            object-fit: cover;
+        }
+
+        /* 부드러운 로딩 효과 */
+        .resume-image {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+
+        .resume-image:nth-child(1) { animation-delay: 0.1s; }
+        .resume-image:nth-child(2) { animation-delay: 0.2s; }
+        .resume-image:nth-child(3) { animation-delay: 0.3s; }
+        .resume-image:nth-child(4) { animation-delay: 0.4s; }
+        .resume-image:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 모바일 반응형 - 좁은 화면에서 더 크게 */
+        @media (max-width: 768px) {
+            body {
+                background-color: white;
+            }
+            
+            .container {
+                width: 100%;
+                box-shadow: none;
+                margin: 0;
+            }
+            
+            .resume-image {
+                width: 150%; /* 좁은 화면에서 더 크게 */
+                height: auto;
+                margin-left: -20%; /* 중앙 정렬을 위해 왼쪽으로 이동 */
+                object-fit: contain;
+            }
+        }
+
+        /* 태블릿 크기 */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .resume-image {
+                width: 130%;
+                margin-left: -5%;
+            }
+        }
+
+        /* 큰 화면에서는 100% 꽉 채움 */
+        @media (min-width: 1025px) {
+            .container {
+                width: 100vw;
+                max-width: none;
+            }
+            
+            .resume-image {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+        }
+
+        /* 인쇄용 스타일 */
+        @media print {
+            body {
+                background-color: white;
+            }
+            
+            .container {
+                box-shadow: none;
+                max-width: none;
+            }
+            
+            .resume-image {
+                width: 100%;
+                height: auto;
+                break-inside: avoid;
+            }
+        }
+
+        /* 로딩 스피너 (이미지 로드 전) */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            color: #666;
+        }
+
+        /* 스크롤 부드럽게 */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="resume-section">
+            <img src="1.png" alt="김도경 이력서 - 소개" class="resume-image" loading="lazy">
+        </section>
+
+        <section class="resume-section">
+            <img src="2.png" alt="Writing Experience - 사라지는 정보를 쌓아가는 자산으로" class="resume-image" loading="lazy">
+        </section>
+
+        <section class="resume-section">
+            <img src="3.png" alt="나만 아는 문서에서 모두가 찾는 문서로" class="resume-image" loading="lazy">
+        </section>
+
+        <section class="resume-section">
+            <img src="4.png" alt="Other Experience - 다양한 IT 프로젝트 경험" class="resume-image" loading="lazy">
+        </section>
+
+        <section class="resume-section">
+            <img src="5.png" alt="Contact 정보" class="resume-image" loading="lazy">
+        </section>
+    </div>
+
+    <script>
+        // 이미지 로드 에러 처리
+        document.querySelectorAll('.resume-image').forEach(img => {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                console.log('이미지 로드 실패:', this.src);
+            });
+        });
+
+        // 부드러운 스크롤 및 성능 최적화
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>
